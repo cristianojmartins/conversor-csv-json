@@ -1,38 +1,71 @@
-# Conversor CSV para JSON
+# Conversor CSV para JSON e Excel
 
-## Sobre o projeto
+Aplicação desenvolvida em Python para converter arquivos CSV
+em JSON ou planilhas Excel (.xlsx), com validação de dados
+e testes automatizados.
 
-Ferramenta desenvolvida em Python para converter dados de
-arquivos CSV para o formato JSON.
-
-O projeto faz parte de um portfólio de programação voltado
-a serviços de tratamento, validação e organização de dados.
+O projeto faz parte de um portfólio prático de programação,
+com foco em tratamento, organização e conversão de dados.
 
 ## Funcionalidades
 
-- Leitura de arquivos CSV.
-- Conversão de registros para JSON.
-- Validação de campos dos registros.
-- Identificação de campos ausentes.
-- Identificação de campos extras.
-- Identificação de nomes de colunas repetidos.
+- Conversão de CSV para JSON.
+- Conversão de CSV para Excel (.xlsx).
+- Interface web para enviar arquivos pelo navegador.
+- Execução também pelo terminal.
+- Preservação de caracteres acentuados.
+- Validação de campos ausentes ou extras.
+- Identificação de cabeçalhos duplicados.
 - Validação de valores de idade.
-- Mensagens de erro para dados inválidos.
+- Limite de upload de 5 MB na aplicação web.
+- Proteção do nome do arquivo enviado.
+- Testes automatizados para conversões e erros.
+
+## Tecnologias
+
+- Python 3
+- Flask
+- openpyxl
+- unittest
+- HTML e CSS na interface web
 
 ## Requisitos
 
-- Python 3 instalado.
-- Termux, Linux ou outro ambiente compatível com Python.
+Python 3 instalado e acesso ao terminal.
 
-## Como executar
+Instale as dependências:
 
-No terminal, entre na pasta do projeto:
+```bash
+python -m pip install flask openpyxl
+```
+
+## Executar a versão web
+
+Entre na pasta do projeto:
 
 ```bash
 cd ~/freelancer_dados/conversor_csv_json
 ```
 
-Execute a conversão:
+Inicie a aplicação:
+
+```bash
+python app_web.py
+```
+
+No navegador do mesmo dispositivo, abra:
+
+http://127.0.0.1:8000
+
+Selecione um arquivo CSV e escolha JSON ou Excel como formato
+de saída. Depois, envie o arquivo para iniciar a conversão.
+
+Para encerrar a aplicação, volte ao terminal e pressione
+Ctrl+C.
+
+## Executar pelo terminal
+
+Para converter CSV em JSON:
 
 ```bash
 python conversor.py clientes.csv clientes.json
@@ -41,43 +74,48 @@ python conversor.py clientes.csv clientes.json
 O primeiro argumento é o arquivo CSV de entrada.
 O segundo argumento é o arquivo JSON de saída.
 
-## Arquivos de exemplo
+## Executar os testes
 
-- `clientes.csv`: dados de entrada.
-- `clientes.json`: resultado da conversão.
-- `incompleto.csv`: teste de campos ausentes.
-- `extras.csv`: teste de campos adicionais.
-- `duplicado.csv`: teste de nomes de colunas repetidos.
-- `idade_invalida.csv`: teste de idade inválida.
+Execute todos os testes automatizados:
 
-## Testes realizados
+```bash
+python -m unittest discover -v
+```
 
-Foram realizados testes com:
+Os testes verificam conversões válidas, dados inválidos,
+campos ausentes ou extras, cabeçalhos duplicados, arquivos
+vazios, formato de saída não suportado, limite de upload,
+nome seguro de arquivo e tratamento de erros internos.
 
-- Conversão de registros válidos.
-- Campos ausentes.
-- Campos extras.
-- Nomes de colunas repetidos.
-- Idade inválida.
-- Arquivo CSV vazio.
-- Arquivo de saída já existente.
+## Arquivos de exemplo e teste
 
-Os resultados devem ser conferidos novamente após
-alterações no programa.
+- `clientes.csv`: exemplo de entrada.
+- `clientes.json`: exemplo de saída JSON.
+- `incompleto.csv`: exemplo de campos ausentes.
+- `extras.csv`: exemplo de campos extras.
+- `duplicado.csv`: exemplo de cabeçalhos duplicados.
+- `idade_invalida.csv`: exemplo de idade inválida.
+- `vazio.csv`: exemplo de arquivo vazio.
+- `test_conversor.py`: testes do conversor de terminal.
+- `test_app_web.py`: testes da aplicação web.
+
+## Segurança e limitações
+
+A aplicação foi configurada para testes locais. Não a exponha
+diretamente à internet sem uma revisão adicional de segurança
+e uma configuração apropriada para produção.
+
+O limite de upload da aplicação web é de 5 MB.
 
 ## Objetivo profissional
 
-Este projeto demonstra conhecimentos práticos de Python,
-manipulação de arquivos, conversão de formatos e validação
-de dados.
+Demonstrar habilidades práticas em Python, manipulação de
+arquivos, validação de dados, automação, testes e criação
+de uma interface web para processamento de informações.
 
-Possíveis aplicações incluem preparação de dados para
-planilhas, sistemas e integrações entre ferramentas.
+## Melhorias futuras
 
-## Próximas melhorias
-
-- Criar testes automatizados.
-- Melhorar o tratamento de erros.
-- Documentar os formatos de entrada e saída.
-- Preparar exemplos de uso para clientes.
-- Publicar o projeto no GitHub como portfólio.
+- Adicionar capturas de tela da aplicação.
+- Organizar exemplos de entrada e saída.
+- Ampliar a documentação e os testes.
+- Preparar uma demonstração para o portfólio.
